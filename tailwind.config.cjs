@@ -1,16 +1,19 @@
 /** @type {import('tailwindcss').Config}*/
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ['./src/**/*.{html,js,svelte,ts}'],
 
-	theme: {
-		extend: {
-			fontFamily: {
-				'montserrat': ['Montserrat', 'sans-serif'],
-			}
-		},
-	},
+  theme: {
+    extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif']
+      },
+      width: {
+        128: '32rem'
+      }
+    }
+  },
 
-	plugins: []
+  plugins: []
 };
 
 module.exports = config;

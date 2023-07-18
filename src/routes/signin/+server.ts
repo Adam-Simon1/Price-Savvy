@@ -1,6 +1,6 @@
 import { dbPoolConnect, pool } from '$lib/db';
 import { JWT_SECRET } from '$env/static/private';
-import { json } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
 import validator from 'validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -33,34 +33,30 @@ export async function POST({ request, cookies }) {
             expiresIn: '24h'
           });
 
-          const oneDay = 24 * 60 * 60 * 1000;
-
-          const expirationDate = new Date(Date.now() + oneDay);
-
           cookies.set('token', token, {
-            sameSite: 'lax',
+            sameSite: 'strict',
             httpOnly: true,
-            secure: true,
-            expires: expirationDate
+            secure: false,
+            maxAge: 60 * 60 * 24
           });
 
           client.release();
-          return new Response('Redirect', { status: 303, headers: { Location: '/home' } });
+          return json({ status: 302, message: 'Logged in successfully' });
         } else {
           client.release();
-          return json({ message: 'Incorrect email and/or password' });
+          return json({ status: 206, message: 'Incorrect email and/or password' });
         }
       } else {
         client.release();
-        return json({ message: 'Incorrect email and/or password' });
+        return json({ status: 206, message: 'Incorrect email and/or password' });
       }
     } catch (error) {
       console.log(error);
       client.release();
-      return json({ message: 'An unexpected error occurred' });
+      return json({ status: 206, message: 'An unexpected error occurred' });
     }
   } else {
     pool.end();
-    return json({ message: 'Missing username, email, or password' });
+    return json({ status: 206, message: 'Missing username, email, or password' });
   }
 }

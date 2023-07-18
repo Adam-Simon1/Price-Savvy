@@ -64,7 +64,7 @@
     </h2>
     <button
       class="text-white font-montserrat text-2xl bg-green-600 h-12 w-52 rounded-3xl hover:bg-green-700 active:translate-y-1 transition shadow-xl"
-      on:click={signInLink}>Get Started</button
+      on:click={signInLink}>Sign In</button
     >
   </div>
 </div>

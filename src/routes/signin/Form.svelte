@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
   let email: string;
   let password: string;
   let message: string = '';
@@ -8,9 +9,14 @@
       method: 'POST',
       body: JSON.stringify({ email, password })
     });
+    console.log(response);
 
     const data = await response.json();
     message = data.message;
+
+    if (data.status == 302) {
+      goto('/home');
+    }
   };
 </script>
 

@@ -2,7 +2,7 @@ import { JWT_SECRET } from '$env/static/private';
 import jwt from 'jsonwebtoken';
 import { json } from '@sveltejs/kit';
 
-export async function GET({ cookies }) {
+export async function GET({ cookies }): Promise<object> {
   const token = cookies.get('token');
 
   if (!token) {
@@ -13,7 +13,7 @@ export async function GET({ cookies }) {
   }
 
   try {
-    const decoded = (await jwt.verify(token, JWT_SECRET)) as Record<any, any>;
+    const decoded = (await jwt.verify(token, JWT_SECRET)) as Record<string, string>;
 
     if (!decoded) {
       return json({

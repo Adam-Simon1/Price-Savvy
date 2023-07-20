@@ -8,7 +8,7 @@
     isExpanded = !isExpanded;
   }
 
-  async function signOut() {
+  async function signOutUser() {
     const response = await fetch('/api/signout', { method: 'POST' });
     console.log(response);
     const status = await response.json();
@@ -30,7 +30,7 @@
         <li>
           <button
             class="w-40 h-12 rounded-full text-xl font-montserrat bg-gray-700 mt-4 text-red-600 hover:bg-gray-800 transition flex flex-row justify-center items-center"
-            on:click={signOut}
+            on:click={signOutUser}
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="mr-1"

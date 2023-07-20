@@ -1,24 +1,60 @@
 <script lang="ts">
+  import LoadingScreen from '../LoadingScreen.svelte';
   import { goto } from '$app/navigation';
+  import { writable } from 'svelte/store';
+  import { signIn } from '@auth/sveltekit/client';
+
   let email: string;
   let password: string;
   let message: string = '';
+  let isLoading = writable(false);
   const handleSubmit = async () => {
     message = '';
+    isLoading.set(true);
     const response = await fetch('/signin', {
       method: 'POST',
       body: JSON.stringify({ email, password })
     });
-    console.log(response);
 
-    const data = await response.json();
+    interface data {
+      message: string;
+      status: number;
+    }
+
+    const data = (await response.json()) as data;
     message = data.message;
 
     if (data.status == 302) {
       goto('/home');
     }
+    isLoading.set(false);
+  };
+
+  const githubSignIn = async () => {
+    isLoading.set(true);
+    await signIn('github');
+
+    const response = await fetch('/api/github-signin', { method: 'POST' });
+
+    interface user {
+      name: string;
+      image: string;
+      email: string;
+    }
+
+    const user = await response.json() as user;
+    console.log(user.name);
+    if (user.name && user.image && user.email) {
+      goto('/home');
+    }
+
+    isLoading.set(false);
   };
 </script>
+
+{#if $isLoading}
+  <LoadingScreen />
+{/if}
 
 <div>
   <a
@@ -79,6 +115,7 @@
   <div>
     <button
       class="h-12 w-80 rounded-3xl bg-gray-700 p-3 mb-2 mt-14 text-xl font-montserrat text-white flex items-center justify-center hover:bg-gray-800 active:translate-y-1 transition shadow-xl"
+      on:click={githubSignIn}
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         class="mr-2"
@@ -113,7 +150,7 @@
       required
     />
     <input
-      type="text"
+      type="password"
       placeholder="Password"
       class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
       bind:value={password}

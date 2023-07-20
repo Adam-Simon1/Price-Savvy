@@ -1,0 +1,45 @@
+<script lang="ts">
+  import { slide } from 'svelte/transition';
+  let isExpanded = false;
+  let sortingOption: string = 'Sort prices by:';
+
+  function clickBtn() {
+    isExpanded = !isExpanded;
+  }
+
+  function clickContent(option: string) {
+    isExpanded = !isExpanded;
+
+    sortingOption = option;
+  }
+</script>
+
+<div class="row-start-2 col-start-3 justify-self-center">
+  <div class="mb-1">
+    <button
+      class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition"
+      on:click={clickBtn}>{sortingOption}</button
+    >
+  </div>
+
+  {#if isExpanded}
+    <div class="flex flex-col bg-gray-700 rounded-3xl" transition:slide>
+      <button
+        class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition"
+        on:click={() => clickContent('Lowest to Highest')}>Lowest to Highest</button
+      >
+      <button
+        class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition"
+        on:click={() => clickContent('Highest to Lowest')}>Highest to Lowest</button
+      >
+      <button
+        class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition"
+        on:click={() => clickContent('A-Z Sorted')}>A-Z Sorted</button
+      >
+      <button
+        class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition"
+        on:click={() => clickContent('Z-A Sorted')}>Z-A Sorted</button
+      >
+    </div>
+  {/if}
+</div>

@@ -1,13 +1,19 @@
 <script lang="ts">
-  import { enhance } from '$app/forms';
+  import { goto } from '$app/navigation';
+  import LoadingScreen from '../LoadingScreen.svelte';
+  import { writable } from 'svelte/store';
+
   let message: string = '';
   let username: string;
   let password: string;
   let email: string;
   let visible: boolean = false;
 
+  let isLoading = writable(false);
+
   const handleSubmit = async () => {
     message = '';
+    isLoading.set(true);
     const response = await fetch('/signup', {
       method: 'POST',
       body: JSON.stringify({ username, email, password })
@@ -15,6 +21,12 @@
 
     const data = await response.json();
     message = data.message;
+
+    if (data.status == 302) {
+      goto('/signin');
+    }
+
+    isLoading.set(false);
   };
   const openEye = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -36,6 +48,10 @@
     document.querySelector('#password').type = visible ? 'text' : 'password';
   }
 </script>
+
+{#if $isLoading}
+  <LoadingScreen />
+{/if}
 
 <div>
   <a
@@ -111,23 +127,23 @@
     />
     <div class="flex flex-row">
       <input
-      type="password"
-      placeholder="Password"
-      name="password"
-      class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
-      bind:value={password}
-      id="password"
-      required
-    />
-    <button class="relative right-10" type="button" id="switch" on:click={toggle}
-      >{#if visible}
-        {@html openEye}
-      {:else}
-        {@html closedEye}
-      {/if}</button
-    >
+        type="password"
+        placeholder="Password"
+        name="password"
+        class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
+        bind:value={password}
+        id="password"
+        required
+      />
+      <button class="relative right-10" type="button" id="switch" on:click={toggle}
+        >{#if visible}
+          {@html openEye}
+        {:else}
+          {@html closedEye}
+        {/if}</button
+      >
     </div>
-    
+
     <div class="text-center w-80">
       <p class="text-red-600 font-montserrat">{message}</p>
     </div>

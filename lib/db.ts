@@ -14,4 +14,3 @@ export const pool = await new Pool({
 
 export const dbPoolConnect = async () => await pool.connect();
 
-export const dbEnd = async () => await pool.end();

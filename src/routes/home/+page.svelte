@@ -10,7 +10,7 @@
     const user = await response.json();
     console.log(user);
     if (user.status !== 200) {
-      goto('/not-logged-in');
+      goto('/');
     }
   });
 </script>

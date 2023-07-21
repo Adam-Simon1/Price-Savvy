@@ -18,6 +18,17 @@
     tescoStatus.set(tescoCheckbox.checked);
     kauflandStatus.set(kauflandCheckbox.checked);
   }
+
+  function reset() {
+    tescoStatus.set(false);
+    kauflandStatus.set(false);
+
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    for (let i = 0; i < checkboxes.length; i++) {
+      const checkbox = checkboxes[i] as HTMLInputElement;
+      checkbox.checked = false;
+    }
+  }
 </script>
 
 <div class="flex flex-col row-start-2 col-start-3 self-center justify-self-center mt-108">
@@ -58,7 +69,7 @@
   </div>
   <div>
     <button
-      class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition"
+      class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition" on:click={reset}
       >Reset</button
     >
   </div>

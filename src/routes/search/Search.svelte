@@ -1,14 +1,30 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, afterUpdate } from 'svelte';
   import { writable } from 'svelte/store';
   import LoadingScreen from '../LoadingScreen.svelte';
   import { autoComplete } from 'effortless-complete';
   import CheckBoxes from './CheckBoxes.svelte';
+  import { tescoStatus, kauflandStatus } from './stores';
   import DropDown from './DropDown.svelte';
 
   let kaufland: string[];
   let tesco: string[];
+  let autocompleteData: string[];
   let isLoading = writable(false);
+
+  $: {
+    const tescoChecked = $tescoStatus;
+    const kauflandChecked = $kauflandStatus;
+    const bothChecked = tescoChecked && kauflandChecked;
+
+    autocompleteData = bothChecked
+      ? tesco.concat(kaufland)
+      : tescoChecked
+      ? tesco
+      : kauflandChecked
+      ? kaufland
+      : [];
+  }
 
   onMount(async () => {
     isLoading.set(true);
@@ -18,30 +34,33 @@
       tesco: string;
     }
 
-    //const response = await fetch('/search', { method: 'POST' });
-    //const data = (await response.json()) as data;
+    const response = await fetch('/search', { method: 'POST' });
+    const data = (await response.json()) as data;
 
-    //kaufland = await JSON.parse(data.kaufland);
-    //tesco = await JSON.parse(data.tesco);
+    kaufland = await JSON.parse(data.kaufland);
+    tesco = await JSON.parse(data.tesco);
     isLoading.set(false);
+  });
 
-    let inputElement = document.getElementById('inputElement');
+  // Call autoComplete after the DOM is fully rendered
+  afterUpdate(() => {
+    const inputElement = document.getElementById('inputElement');
     const suggestionContainer = document.getElementById('suggestionsContainer');
 
     const config = {
       suggestionContainer: suggestionContainer,
-      data: kaufland,
+      data: autocompleteData,
       inputElement: inputElement,
       clickAction: insertSuggestion,
       filtering: 'all'
     };
 
     autoComplete(config);
-
-    function insertSuggestion(suggestion: string) {
-      console.log(suggestion);
-    }
   });
+
+  function insertSuggestion(suggestion: string) {
+    console.log(suggestion);
+  }
 </script>
 
 {#if $isLoading}

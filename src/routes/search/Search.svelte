@@ -48,12 +48,6 @@
     }
   }
 
-  function getPrice(item: string): number {
-    const priceString = item.split(';')[1].trim();
-    const price = parseFloat(priceString.replace(',', '.'));
-    return price;
-  }
-
   onMount(async () => {
     isLoading.set(true);
 
@@ -92,16 +86,43 @@
     const textareaArray = textareaValue.split('\n').filter((line) => line.trim() !== '');
     const sum = textareaArray.reduce((total, item) => total + getPrice(item), 0);
     roundedSum = Math.round((sum + Number.EPSILON) * 100) / 100;
-    console.log(roundedSum);
+
+    updateLocalStorage(textareaArray);
   }
 
   function removeSuggestion() {
     let textareaArray = textareaValue.split('\n').filter((line) => line.trim() !== '');
     textareaArray = textareaArray.slice(0, -1);
+
     const sum = textareaArray.reduce((total, item) => total + getPrice(item), 0);
     roundedSum = Math.round((sum + Number.EPSILON) * 100) / 100;
     textareaValue = textareaArray.join('\n');
     Cookies.set('textareaCookie', textareaValue, { expires: 1 });
+
+    updateLocalStorage(textareaArray);
+  }
+
+  function updateLocalStorage(textArray: string[]) {
+    let tescoArray: string[] = [];
+    let kauflandArray: string[] = [];
+
+    for (let i = 0; i < textArray.length; i++) {
+      const item = textArray[i];
+      if (kaufland.includes(item)) {
+        kauflandArray.push(item);
+      } else if (tesco.includes(item)) {
+        tescoArray.push(item);
+      }
+    }
+
+    localStorage.setItem('kaufland', JSON.stringify(kauflandArray));
+    localStorage.setItem('tesco', JSON.stringify(tescoArray));
+  }
+
+  function getPrice(item: string): number {
+    const priceString = item.split(';')[1].trim();
+    const price = parseFloat(priceString.replace(',', '.'));
+    return price;
   }
 </script>
 
@@ -142,7 +163,7 @@
   </div>
 
   <div
-    class="justify-self-end col-start-1 row-start-3 self-center mr-20 cursor-pointer"
+    class="absolute cursor-pointer"
     on:click={removeSuggestion}
     role="none"
   >
@@ -169,7 +190,6 @@
   </div>
 
   <DropDown />
-
   <CheckBoxes />
 </div>
 

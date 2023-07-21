@@ -18,7 +18,8 @@ const config = {
         128: "32rem"
       },
       margin: {
-        108: "28rem"
+        108: "28rem",
+        134: "36rem"
       }
     }
   },

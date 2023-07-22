@@ -15,6 +15,6 @@
 </script>
 
 <main class="bg-gray-900 h-auto flex justify-center items-center flex-col">
-  <GetStarted/>
-  <Preview/>
+  <GetStarted />
+  <Preview />
 </main>

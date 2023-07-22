@@ -1,4 +1,4 @@
-<div class="bg-gray-900 h-screen fixed w-screen z-10 flex justify-center items-center">
+<div class="bg-gray-900 h-screen fixed w-screen z-50 flex justify-center items-center">
   <svg width="130" height="130" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill='#fff'
     ><style>
       .spinner_EUy1 {

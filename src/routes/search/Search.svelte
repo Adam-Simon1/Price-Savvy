@@ -132,9 +132,9 @@
 
 <div class="grid grid-cols-3 grid-rows-3">
   <div
-    class="flex flex-col justify-center row-start-1 row-end-3 col-start-2 justify-self-center mb-72 self-center"
+    class="inline-block row-start-1 row-end-3 col-start-2 justify-self-center self-start mt-32 z-10" 
   >
-    <div class="w-108 absolute">
+    <div class="w-108 mb-2">
       <input
         type="text"
         class="w-108 h-12 rounded-full bg-gray-700 p-5 font-montserrat text-white text-xl shadow-2xl"
@@ -144,7 +144,7 @@
     </div>
     <div
       id="suggestionsContainer"
-      class="bg-gray-700 rounded-3xl text-white font-montserrat w-108 max-h-128 overflow-y-auto mt-134 shadow-2xl z-10"
+      class="bg-gray-700 rounded-3xl text-white font-montserrat w-108 max-h-128 overflow-y-auto shadow-2xl"
     />
   </div>
 
@@ -163,7 +163,7 @@
   </div>
 
   <div
-    class="absolute cursor-pointer"
+    class="cursor-pointer row-start-3 col-start-1 self-center justify-self-start ml-80"
     on:click={removeSuggestion}
     role="none"
   >
@@ -185,7 +185,7 @@
     </svg>
   </div>
 
-  <div class="justify-self-center col-start-1 row-start-3 self-center mt-32 mr-12">
+  <div class="justify-self-start col-start-1 row-start-3 self-center mt-32 ml-32">
     <h1 class="text-white font-montserrat text-2xl">Price: {roundedSum} €</h1>
   </div>
 

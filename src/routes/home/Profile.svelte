@@ -2,6 +2,8 @@
   import { goto } from '$app/navigation';
   import { slide } from 'svelte/transition';
 
+  export let name: string;
+
   let isExpanded = false;
 
   function clickBtn() {
@@ -10,7 +12,6 @@
 
   async function signOutUser() {
     const response = await fetch('/api/signout', { method: 'POST' });
-    console.log(response);
     const status = await response.json();
     if (status.status == 302) {
       goto('/');
@@ -22,7 +23,7 @@
   <button
     on:click={clickBtn}
     class="text-white text-2xl font-montserrat w-40 h-12 bg-gray-900 rounded-full hover:bg-slate-800 active:translate-y-1 transition"
-    >Profile</button
+    >{name}</button
   >
   {#if isExpanded}
     <nav transition:slide>

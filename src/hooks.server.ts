@@ -7,7 +7,7 @@ export const handle = SvelteKitAuth({
   providers: [GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET })],
   secret: GITHUB_AUTH_SECRET
 });
-
+*/
 
 import { JWT_SECRET } from '$env/static/private';
 import jwt from 'jsonwebtoken';
@@ -16,7 +16,7 @@ import { json } from '@sveltejs/kit';
 
 export const handle = async ({ event, resolve }) => {
   const client = await dbPoolConnect();
-  const cookies = event.cookies;
+  const { cookies } = event;
   const token = cookies.get('token');
 
   if (token) {
@@ -26,7 +26,7 @@ export const handle = async ({ event, resolve }) => {
         throw new Error('Something went wrong');
       }
 
-      const results = client.query('SELECT * WHERE id = $1', [jwtUser.id]);
+      const results = await client.query('SELECT * FROM accounts WHERE id = $1', [jwtUser.id]);
       const user = results.rows[0];
 
       if (!results || !user) {
@@ -36,19 +36,22 @@ export const handle = async ({ event, resolve }) => {
       interface SessionUser {
         id: number;
         email: string;
+        username: string;
       }
 
       const sessionUser: SessionUser = {
         id: user.id,
-        email: user.email
+        email: user.email,
+        username: user.username
       };
 
       event.locals.user = sessionUser;
+      client.release();
     } catch (error) {
+      client.release();
       console.error(error);
     }
   }
 
   return await resolve(event);
 };
-*/

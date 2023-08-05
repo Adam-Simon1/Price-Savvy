@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Preview from '../Preview.svelte';
-  import GetStarted2 from './GetStarted2.svelte';
-  import Profile from './Profile.svelte';
+  import Preview from '$lib/Components/Preview.svelte';
+  import GetStarted2 from '$lib/Components/GetStarted2.svelte';
+  import Profile from '$lib/Components/Profile.svelte';
 
   export let data;
 </script>

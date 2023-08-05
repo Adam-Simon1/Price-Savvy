@@ -1,6 +1,6 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
-  import { sortingMethod } from './stores';
+  import { sortingMethod } from '../../routes/search/stores';
   let isExpanded = false;
   let sortingOption: string = 'Sort prices by:';
 

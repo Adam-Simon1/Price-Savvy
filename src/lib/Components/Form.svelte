@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LoadingScreen from '../LoadingScreen.svelte';
+  import LoadingScreen from './LoadingScreen.svelte';
   import { goto } from '$app/navigation';
   import { writable } from 'svelte/store';
   import { signIn } from '@auth/sveltekit/client';

@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import { dbPoolConnect, pool } from '$lib/db';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
-import Form from '../signin/Form.svelte';
+import Form from '../../../lib/Components/Form.svelte';
 
 export async function POST({ request }): Promise<object | void> {
   try {

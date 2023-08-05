@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import GithubLink from '../GithubLink.svelte';
+  import GithubLink from './GithubLink.svelte';
   function signInLink() {
     goto('/search');
   }

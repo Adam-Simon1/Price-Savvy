@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount, afterUpdate } from 'svelte';
   import { writable } from 'svelte/store';
-  import LoadingScreen from '../LoadingScreen.svelte';
+  import LoadingScreen from './LoadingScreen.svelte';
   import { autoComplete } from 'effortless-complete';
   import CheckBoxes from './CheckBoxes.svelte';
-  import { tescoStatus, kauflandStatus } from './stores';
+  import { tescoStatus, kauflandStatus } from '../../routes/search/stores';
   import DropDown from './DropDown.svelte';
-  import { sortingMethod } from './stores';
+  import { sortingMethod } from '../../routes/search/stores';
   import Cookies from 'js-cookie';
 
   let kaufland: string[];

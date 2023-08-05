@@ -15,16 +15,16 @@ const config = {
         128: '32rem'
       },
       height: {
-        128: "32rem"
+        128: '32rem'
       },
       margin: {
-        108: "28rem",
-        134: "36rem"
+        108: '28rem',
+        134: '36rem'
       }
-    }
+    },
   },
 
-  plugins: []
+  plugins: [require('daisyui')]
 };
 
 module.exports = config;

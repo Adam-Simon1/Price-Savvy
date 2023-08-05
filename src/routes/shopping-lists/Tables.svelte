@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-
   interface Items {
     name: string;
     price: number;
@@ -70,92 +69,94 @@
   }
 </script>
 
-{#if tescoItemsArray.length > 0}
-  <div class="relative overflow-x-auto shadow-2xl rounded-3xl max-w-screen-md">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-white uppercase bg-green-600">
-        <tr>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Product name </th>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Price </th>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Quantity </th>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Total Price </th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each tescoItems as tescoItem, index}
-          <tr class="bg-gray-800 border-gray-700 border-b">
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              {tescoItem.name}
-            </th>
-            <td class="px-6 py-4"> {tescoItem.price} €</td>
-            <td class="px-6 py-4">
-              <input
-                type="number"
-                class="w-20 bg-gray-800 text-center text-sm"
-                bind:value={tescoItem.counter}
-                on:input={() => updateCounter(index, tescoItem.counter, tescoItems)}
-              />
-            </td>
-            <td class="px-6 py-4"> {calculateSubTotal(tescoItems, index)} €</td>
+<div class="">
+  {#if tescoItemsArray.length > 0}
+    <div class="relative overflow-x-auto shadow-2xl rounded-3xl max-w-screen-md mb-10">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-white uppercase bg-green-600">
+          <tr>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Product name </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Price </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Quantity </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Total Price </th>
           </tr>
-        {/each}
-      </tbody>
-      <tfoot>
-        <tr class="font-semibold text-gray-900 dark:text-white">
-          <th scope="row" class="px-6 py-3 text-base">Total</th>
-          <td class="px-6 py-3">{calculateTotalBase(tescoItems)} €</td>
-          <td class="px-[3.2rem] py-3">{calculateTotalQuantity(tescoItems)}</td>
-          <td class="px-6 py-3">{calculateTotal(tescoItems)} €</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-{/if}
+        </thead>
+        <tbody>
+          {#each tescoItems as tescoItem, index}
+            <tr class="bg-gray-800 border-gray-700 border-b">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {tescoItem.name}
+              </th>
+              <td class="px-6 py-4"> {tescoItem.price} €</td>
+              <td class="px-6 py-4">
+                <input
+                  type="number"
+                  class="w-20 bg-gray-800 text-center text-sm"
+                  bind:value={tescoItem.counter}
+                  on:input={() => updateCounter(index, tescoItem.counter, tescoItems)}
+                />
+              </td>
+              <td class="px-6 py-4"> {calculateSubTotal(tescoItems, index)} €</td>
+            </tr>
+          {/each}
+        </tbody>
+        <tfoot>
+          <tr class="font-semibold text-gray-900 dark:text-white">
+            <th scope="row" class="px-6 py-3 text-base">Total</th>
+            <td class="px-6 py-3">{calculateTotalBase(tescoItems)} €</td>
+            <td class="px-[3.2rem] py-3">{calculateTotalQuantity(tescoItems)}</td>
+            <td class="px-6 py-3">{calculateTotal(tescoItems)} €</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  {/if}
 
-{#if kauflandItemsArray.length > 0}
-  <div class="relative overflow-x-auto shadow-2xl rounded-3xl max-w-screen-md">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-white uppercase bg-green-600">
-        <tr>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Product name </th>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Price </th>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Quantity </th>
-          <th scope="col" class="px-6 py-3 font-montserrat"> Total Price </th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each kauflandItems as kauflandItem, index}
-          <tr class="bg-gray-800 border-gray-700 border-b">
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              {kauflandItem.name}
-            </th>
-            <td class="px-6 py-4"> {kauflandItem.price} €</td>
-            <td class="px-6 py-4">
-              <input
-                type="number"
-                class="w-20 bg-gray-800 text-center text-sm"
-                bind:value={kauflandItem.counter}
-                on:input={() => updateCounter(index, kauflandItem.counter, kauflandItems)}
-              />
-            </td>
-            <td class="px-6 py-4"> {calculateSubTotal(kauflandItems, index)} €</td>
+  {#if kauflandItemsArray.length > 0}
+    <div class="relative overflow-x-auto shadow-2xl rounded-3xl max-w-screen-md">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-white uppercase bg-green-600">
+          <tr>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Product name </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Price </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Quantity </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> Total Price </th>
           </tr>
-        {/each}
-      </tbody>
-      <tfoot>
-        <tr class="font-semibold text-gray-900 dark:text-white">
-          <th scope="row" class="px-6 py-3 text-base">Total</th>
-          <td class="px-6 py-3">{calculateTotalBase(kauflandItems)} €</td>
-          <td class="px-[3.2rem] py-3">{calculateTotalQuantity(kauflandItems)}</td>
-          <td class="px-6 py-3">{calculateTotal(kauflandItems)} €</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-{/if}
+        </thead>
+        <tbody>
+          {#each kauflandItems as kauflandItem, index}
+            <tr class="bg-gray-800 border-gray-700 border-b">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {kauflandItem.name}
+              </th>
+              <td class="px-6 py-4"> {kauflandItem.price} €</td>
+              <td class="px-6 py-4">
+                <input
+                  type="number"
+                  class="w-20 bg-gray-800 text-center text-sm"
+                  bind:value={kauflandItem.counter}
+                  on:input={() => updateCounter(index, kauflandItem.counter, kauflandItems)}
+                />
+              </td>
+              <td class="px-6 py-4"> {calculateSubTotal(kauflandItems, index)} €</td>
+            </tr>
+          {/each}
+        </tbody>
+        <tfoot>
+          <tr class="font-semibold text-gray-900 dark:text-white">
+            <th scope="row" class="px-6 py-3 text-base">Total</th>
+            <td class="px-6 py-3">{calculateTotalBase(kauflandItems)} €</td>
+            <td class="px-[3.2rem] py-3">{calculateTotalQuantity(kauflandItems)}</td>
+            <td class="px-6 py-3">{calculateTotal(kauflandItems)} €</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  {/if}
+</div>

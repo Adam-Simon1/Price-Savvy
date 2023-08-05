@@ -4,7 +4,6 @@ import { json } from '@sveltejs/kit';
 import validator from 'validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import type { UserConfigFn } from 'vite';
 
 export async function POST({ request, cookies }): Promise<object> {
   const client = await dbPoolConnect();

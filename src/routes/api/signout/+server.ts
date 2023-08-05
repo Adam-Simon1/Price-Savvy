@@ -1,6 +1,6 @@
-import { json } from '@sveltejs/kit';
+import { json, redirect } from '@sveltejs/kit';
 
 export async function POST({ cookies }): Promise<object> {
   await cookies.delete('token', { path: '/', sameSite: 'strict' });
-  return json({ status: 302 });
+  throw redirect(307, '/')
 }

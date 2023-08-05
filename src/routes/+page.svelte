@@ -14,7 +14,7 @@
   });
 </script>
 
-<main class="bg-gray-900 h-auto flex justify-center items-center flex-col">
+<main class="bg-gray-900 min-h-screen min-w-full flex justify-center items-center flex-col">
   <GetStarted />
   <Preview />
 </main>

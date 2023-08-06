@@ -8,6 +8,7 @@
   import DropDown from './DropDown.svelte';
   import { sortingMethod } from '../../routes/search/stores';
   import Cookies from 'js-cookie';
+  import { goto } from '$app/navigation';
 
   let kaufland: string[];
   let tesco: string[];
@@ -124,73 +125,91 @@
     const price = parseFloat(priceString.replace(',', '.'));
     return price;
   }
+
+  function shopListsLink() {
+    goto('/shopping-lists');
+  }
 </script>
 
 {#if $isLoading}
   <LoadingScreen />
 {/if}
 
-<div class="grid grid-cols-3 grid-rows-3">
-  <div
-    class="inline-block row-start-1 row-end-3 col-start-2 justify-self-center self-start mt-32 z-10" 
-  >
-    <div class="w-108 mb-2">
-      <input
-        type="text"
-        class="w-108 h-12 rounded-full bg-gray-700 p-5 font-montserrat text-white text-xl shadow-2xl"
-        id="inputElement"
-        placeholder="Search for a product:"
-      />
-    </div>
-    <div
-      id="suggestionsContainer"
-      class="bg-gray-700 rounded-3xl text-white font-montserrat w-108 max-h-128 overflow-y-auto shadow-2xl"
-    />
-  </div>
-
-  <div class="col-start-1 row-start-2">
-    <div>
-      <textarea
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-        readonly
-        class="resize-none h-128 w-96 bg-gray-700 rounded-3xl overflow-y-auto shadow-2xl px-6 py-5 text-lg text-white font-montserrat"
-        bind:value={textareaValue}
-      />
-    </div>
-  </div>
-
-  <div
-    class="cursor-pointer row-start-3 col-start-1 self-center justify-self-start ml-80"
-    on:click={removeSuggestion}
-    role="none"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-arrow-back-up"
-      width="50"
-      height="50"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="#fff"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 14l-4 -4l4 -4" />
-      <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
-    </svg>
-  </div>
-
-  <div class="justify-self-start col-start-1 row-start-3 self-center mt-32 ml-32">
-    <h1 class="text-white font-montserrat text-2xl">Price: {roundedSum} €</h1>
-  </div>
-
+<div class="">
   <DropDown />
-  <CheckBoxes />
+
+  <div class="flex justify-center mb-10">
+    <div class="inline-block z-10 mt-10">
+      <div class="mb-2 text-center">
+        <input
+          type="text"
+          class="w-screen h-12 rounded-full bg-gray-700 p-5 font-montserrat text-white text-xl shadow-2xl max-w-md"
+          id="inputElement"
+          placeholder="Search for a product:"
+        />
+      </div>
+      <div class="flex justify-center">
+        <div
+          id="suggestionsContainer"
+          class="bg-gray-700 rounded-3xl text-white font-montserrat w-screen max-h-128 overflow-y-auto shadow-2xl max-w-md"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:flex lg:w-screen lg:justify-center lg:items-center">
+    <div class="lg:mr-[30%] 2xl:mr-[30rem]">
+      <div class="flex justify-center items-center flex-col">
+        <div class="text-center grid">
+          <div class="row-start-1 col-start-1">
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              readonly
+              class="resize-none h-128 w-screen max-w-sm bg-gray-700 rounded-3xl overflow-y-auto shadow-2xl px-6 text-lg text-white font-montserrat"
+              bind:value={textareaValue}
+            />
+          </div>
+
+          <div class="flex justify-end row-start-1 col-start-1 self-end mr-3 mb-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="cursor-pointer"
+              width="50"
+              height="50"
+              on:click={removeSuggestion}
+              role="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="#fff"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 14l-4 -4l4 -4" />
+              <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5 border-b-2 border-gray-800 pb-10 lg:border-b-0">
+        <h1 class="text-white font-montserrat text-2xl">Price: {roundedSum} €</h1>
+      </div>
+    </div>
+
+    <CheckBoxes />
+  </div>
+
+  <div class="text-center mt-10 mb-10">
+    <h1 class="font-montserrat text-white text-2xl mb-3">Create a shopping list:</h1>
+    <button
+      class="font-montserrat text-white text-xl h-12 w-44 bg-green-600 rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
+      on:click={shopListsLink}>Shopping list</button
+    >
+  </div>
 </div>
 
 <style global>

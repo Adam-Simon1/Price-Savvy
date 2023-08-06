@@ -16,7 +16,7 @@
   }
 </script>
 
-<div class="row-start-2 col-start-3 justify-self-center">
+<div class="mt-5 flex justify-center flex-col items-center z-20">
   <div class="mb-1">
     <button
       class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition shadow-2xl"
@@ -25,7 +25,7 @@
   </div>
 
   {#if isExpanded}
-    <div class="flex flex-col bg-gray-700 rounded-3xl shadow-2xl" transition:slide>
+    <div class="flex flex-col bg-gray-700 rounded-3xl shadow-2xl w-52" transition:slide>
       <button
         class="w-52 h-12 font-montserrat text-xl text-white bg-gray-700 rounded-3xl hover:bg-gray-800 transition"
         on:click={() => clickContent('Lowest to Highest')}>Lowest to Highest</button

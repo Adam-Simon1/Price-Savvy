@@ -31,36 +31,39 @@
   }
 </script>
 
-<div class="flex flex-col row-start-2 col-start-3 self-center justify-self-center mt-108">
-  <div class="mb-3 flex items-center">
-    <input
-      type="checkbox"
-      name="tesco"
-      id="tesco"
-      class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-    />
-    <label for="tesco" class="font-montserrat text-white text-2xl ml-2">Tesco</label>
-  </div>
-  <div class="mb-3 flex items-center">
-    <input
-      type="checkbox"
-      name="kaufland"
-      id="kaufland"
-      class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-    />
-    <label for="kaufland" class="font-montserrat text-white text-2xl ml-2">Kaufland</label>
+<div class="flex flex-col justify-center items-center mt-10 mb-24 lg:mb-0 lg:mt-0">
+  <div class="flex flex-row lg:flex-col">
+    <div class="mb-3 flex items-center mr-3">
+      <input
+        type="checkbox"
+        name="tesco"
+        id="tesco"
+        class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label for="tesco" class="font-montserrat text-white text-2xl ml-2">Tesco</label>
+    </div>
+    <div class="mb-3 flex items-center mr-3">
+      <input
+        type="checkbox"
+        name="kaufland"
+        id="kaufland"
+        class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label for="kaufland" class="font-montserrat text-white text-2xl ml-2">Kaufland</label>
+    </div>
+
+    <div class="flex items-center mb-4">
+      <input
+        type="checkbox"
+        name="all"
+        id="all"
+        class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        on:change={checkAll}
+      />
+      <label for="all" class="font-montserrat text-white text-2xl ml-2">All</label>
+    </div>
   </div>
 
-  <div class="flex items-center mb-4">
-    <input
-      type="checkbox"
-      name="all"
-      id="all"
-      class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-      on:change={checkAll}
-    />
-    <label for="all" class="font-montserrat text-white text-2xl ml-2">All</label>
-  </div>
   <div class="mb-3">
     <button
       class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition"
@@ -69,8 +72,8 @@
   </div>
   <div>
     <button
-      class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition" on:click={reset}
-      >Reset</button
+      class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition"
+      on:click={reset}>Reset</button
     >
   </div>
 </div>

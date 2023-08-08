@@ -37,6 +37,13 @@ export async function POST({ request, locals }): Promise<object> {
 
         const column = emptyColumn.rows[0].count;
 
+        if (i == 20) {
+          return json({
+            status: 400,
+            message: 'The limit of 20 shopping lists has been reached'
+          });
+        }
+
         if (column == 1) {
           const insertShopList = await client.query(
             `UPDATE producttables SET table${i} = $1 WHERE id = $2`,

@@ -3,14 +3,19 @@
 
   export let data;
 
-  const indexes = JSON.parse(data.indexes);
+  const indexes: number[] = JSON.parse(JSON.parse(data.indexes as string));
 </script>
 
 <main class="min-h-screen bg-gray-900 flex justify-start items-center flex-col">
   <h1 class="text-white font-montserrat text-4xl my-10 font-bold">Shopping Lists</h1>
 
   {#if data.status == 400}
-    <h1>{indexes}</h1>
+    <h1 class="text-white font-montserrat text-xl mb-10">{data.message}</h1>
+    <a
+      href="/search"
+      class="text-white font-montserrat h-12 w-64 bg-green-600 text-xl flex justify-center items-center rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
+      >Create a shopping list</a
+    >
   {:else}
     {#each indexes as index, i}
       <TablesCount index={i + 1} identifier={index} />

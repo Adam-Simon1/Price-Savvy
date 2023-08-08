@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Save from '$lib/Components/Save.svelte';
   interface Items {
     name: string;
     price: number;
@@ -69,9 +70,10 @@
   }
 </script>
 
-<div class=" flex justify-center items-center min-h-screen">
+<div class="flex justify-center items-center min-h-screen flex-col">
+  <Save />
   {#if tescoItemsArray.length > 0}
-    <div class="overflow-x-auto shadow-2xl rounded-3xl max-w-3xl lg:w-[48rem] mb-10">
+    <div class="overflow-x-auto shadow-2xl rounded-3xl mb-10 max-w-full lg:w-[48rem]">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-white uppercase bg-green-600">
           <tr>
@@ -116,7 +118,7 @@
   {/if}
 
   {#if kauflandItemsArray.length > 0}
-    <div class="relative overflow-x-auto shadow-2xl rounded-3xl max-w-screen-md">
+    <div class="overflow-x-auto shadow-2xl rounded-3xl max-w-full lg:w-[48rem]">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-white uppercase bg-green-600">
           <tr>

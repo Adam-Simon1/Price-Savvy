@@ -17,6 +17,13 @@ export async function POST({ request, locals }): Promise<object> {
         [userId, combined]
       );
 
+      const indexes: number[] = [1];
+
+      const insertUserIndexes = await client.query(
+        'INSERT INTO elementid (id, idarray) VALUES ($1, $2)',
+        [userId, indexes]
+      );
+
       client.release();
 
       return json({
@@ -38,6 +45,7 @@ export async function POST({ request, locals }): Promise<object> {
         const column = emptyColumn.rows[0].count;
 
         if (i == 20) {
+          client.release();
           return json({
             status: 400,
             message: 'The limit of 20 shopping lists has been reached'
@@ -49,7 +57,20 @@ export async function POST({ request, locals }): Promise<object> {
             `UPDATE producttables SET table${i} = $1 WHERE id = $2`,
             [combined, userId]
           );
-          console.log('asd');
+
+          const extractIndexes = await client.query('SELECT idarray FROM elementid WHERE id = $1', [
+            userId
+          ]);
+
+          let indexes = extractIndexes.rows[0].idarray;
+
+          indexes = [...indexes, i];
+
+          const updateIndexes = await client.query(
+            'UPDATE elementid SET idarray = $1 WHERE id = $2',
+            [indexes, userId]
+          );
+
           client.release();
 
           return json({

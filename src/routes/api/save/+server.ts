@@ -21,7 +21,7 @@ export async function POST({ request, locals }): Promise<object> {
 
       const insertUserIndexes = await client.query(
         'INSERT INTO elementid (id, idarray) VALUES ($1, $2)',
-        [userId, indexes]
+        [userId, JSON.stringify(indexes)]
       );
 
       client.release();
@@ -68,7 +68,7 @@ export async function POST({ request, locals }): Promise<object> {
 
           const updateIndexes = await client.query(
             'UPDATE elementid SET idarray = $1 WHERE id = $2',
-            [indexes, userId]
+            [JSON.stringify(indexes), userId]
           );
 
           client.release();

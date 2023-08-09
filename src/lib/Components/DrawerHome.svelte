@@ -70,12 +70,12 @@
       </svg>Sign Out</a
     >
     <a
-      href="/search"
+      href="/auth/search"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
       >Edit Shopping List</a
     >
     <a
-      href="/saved-shopping-lists"
+      href="/auth/saved-shopping-lists"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
       >Saved Shopping Lists</a
     >

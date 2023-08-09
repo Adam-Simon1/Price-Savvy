@@ -26,7 +26,7 @@
     message = data.message;
 
     if (data.status == 302) {
-      goto('/home');
+      goto('/auth/home');
     }
     isLoading.set(false);
   };
@@ -46,7 +46,7 @@
     const user = (await response.json()) as user;
     console.log(user.name);
     if (user.name && user.image && user.email) {
-      goto('/home');
+      goto('/auth/home');
     }
 
     isLoading.set(false);

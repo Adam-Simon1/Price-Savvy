@@ -11,7 +11,7 @@
   }
 
   async function signOutUser() {
-    const response = await fetch('../../src/routes/api/signout', { method: 'POST' });
+    const response = await fetch('/api/signout', { method: 'POST' });
     const status = await response.json();
     if (status.status == 302) {
       goto('/');

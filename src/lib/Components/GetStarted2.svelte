@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import GithubLink from './GithubLink.svelte';
   function signInLink() {
-    goto('/search');
+    goto('/auth/search');
   }
 </script>
 

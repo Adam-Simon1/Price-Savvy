@@ -11,7 +11,7 @@
   <DrawerHome />
 
   <a
-    href="/saved-shopping-lists"
+    href="/auth/saved-shopping-lists"
     class="text-white text-2xl font-montserrat hover:bg-gray-800 transition rounded-3xl w-80 text-center active:translate-y-1 absolute top-5 right-56 p-2 hidden sm:inline-block"
     >Saved Shopping Lists</a
   >

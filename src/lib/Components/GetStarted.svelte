@@ -24,7 +24,7 @@
     <div class="text-center">
       <button
         class="font-montserrat bg-green-600 h-12 w-44 text-white text-2xl rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
-        on:click|preventDefault={signInLink}>Sign In</button
+        on:click|preventDefault={signInLink}>Get Started</button
       >
     </div>
   </div>

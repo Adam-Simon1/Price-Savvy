@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tescoStatus, kauflandStatus } from '../../routes/search/stores';
+  import { tescoStatus, kauflandStatus } from '../../routes/auth/search/stores';
 
   let areChecked = false;
 

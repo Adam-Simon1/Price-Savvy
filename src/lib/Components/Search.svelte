@@ -4,9 +4,9 @@
   import LoadingScreen from './LoadingScreen.svelte';
   import { autoComplete } from 'effortless-complete';
   import CheckBoxes from './CheckBoxes.svelte';
-  import { tescoStatus, kauflandStatus } from '../../routes/search/stores';
+  import { tescoStatus, kauflandStatus } from '../../routes/auth/search/stores';
   import DropDown from './DropDown.svelte';
-  import { sortingMethod } from '../../routes/search/stores';
+  import { sortingMethod } from '../../routes/auth/search/stores';
   import Cookies from 'js-cookie';
   import { goto } from '$app/navigation';
 
@@ -57,7 +57,7 @@
       tesco: string;
     }
 
-    const response = await fetch('/search', { method: 'POST' });
+    const response = await fetch('/auth/search', { method: 'POST' });
     const data = (await response.json()) as data;
 
     kaufland = await JSON.parse(data.kaufland);
@@ -127,7 +127,7 @@
   }
 
   function shopListsLink() {
-    goto('/shopping-lists');
+    goto('/auth/shopping-lists');
   }
 </script>
 

@@ -6,7 +6,7 @@
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />
   </div>
-  <div class="flex items-center">
+  <div class="flex items-center mb-5">
     <div class="text-center lg:text-end lg:w-128">
       <h1 class="text-white font-montserrat text-2xl">Search through sales</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
@@ -17,7 +17,7 @@
 </article>
 
 <article class="flex flex-col mb-10 lg:flex-row">
-  <div class="flex items-center">
+  <div class="flex items-center mb-5">
     <div class="text-center lg:text-start lg:w-128">
       <h1 class="text-white font-montserrat text-2xl">Search through sales</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
@@ -42,7 +42,7 @@
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />
   </div>
-  <div class="flex items-center">
+  <div class="flex items-center mb-5">
     <div class="text-center lg:text-end lg:w-128">
       <h1 class="text-white font-montserrat text-2xl">Search through sales</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">

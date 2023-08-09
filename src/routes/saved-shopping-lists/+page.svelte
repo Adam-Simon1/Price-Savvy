@@ -3,7 +3,7 @@
 
   export let data;
 
-  const indexes: number[] = JSON.parse(JSON.parse(data.indexes as string));
+  const indexes: number[] = JSON.parse(data.indexes as string);
 </script>
 
 <main class="min-h-screen bg-gray-900 flex justify-start items-center flex-col">

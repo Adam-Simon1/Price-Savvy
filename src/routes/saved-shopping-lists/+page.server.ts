@@ -11,8 +11,8 @@ export async function load(event) {
     ]);
 
     if (indexesQuery.rows.length > 0) {
-      const indexes: number[] = indexesQuery.rows[0].idarray;
-      console.log(indexes);
+      let indexes = indexesQuery.rows[0].idarray;
+      indexes = JSON.parse(indexes);
 
       return {
         status: 200,

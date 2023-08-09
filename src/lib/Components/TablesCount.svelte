@@ -8,6 +8,8 @@
         method: 'POST',
         body: JSON.stringify({ identifier })
       });
+
+      location.reload();
     }
   }
 </script>

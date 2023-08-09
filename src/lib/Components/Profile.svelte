@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="absolute top-5 left-10 flex flex-col">
+<div class="absolute top-5 right-10 sm:flex flex-col hidden">
   <button
     on:click={clickBtn}
     class="text-white text-2xl font-montserrat w-40 h-12 bg-gray-900 rounded-full hover:bg-slate-800 active:translate-y-1 transition"

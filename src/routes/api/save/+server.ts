@@ -62,13 +62,15 @@ export async function POST({ request, locals }): Promise<object> {
             userId
           ]);
 
-          let indexes = extractIndexes.rows[0].idarray;
+          const indexes = extractIndexes.rows[0].idarray;
 
-          indexes = [...indexes, i];
+          const indexesArr: number[] = JSON.parse(indexes);
+
+          indexesArr.push(i);
 
           const updateIndexes = await client.query(
             'UPDATE elementid SET idarray = $1 WHERE id = $2',
-            [JSON.stringify(indexes), userId]
+            [JSON.stringify(indexesArr), userId]
           );
 
           client.release();

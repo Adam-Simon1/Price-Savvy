@@ -12,7 +12,7 @@
   </div>
 
   <div class="text-center">
-    <div class="flex flex-col mb-10 sm:flex-row">
+    <div class="flex flex-col mb-10 sm:flex-row justify-center items-center sm:items-start">
       <h1 class="text-white font-montserrat text-4xl font-normal flex flex-row mb-5">Welcome to</h1>
       <h1 class="font-montserrat font-bold pl-2 text-white text-4xl">Price Savvy</h1>
     </div>

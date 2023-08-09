@@ -1,7 +1,19 @@
 <script lang="ts">
-	import Form from '$lib/Components/FormSignUp.svelte';
+  import Form from '$lib/Components/FormSignUp.svelte';
+  import { onMount } from 'svelte';
+  import { fly } from 'svelte/transition';
+
+  let visible = false;
+
+  onMount(() => {
+    visible = true;
+  });
 </script>
 
-<main class="flex justify-center items-center h-screen bg-gray-900">
-	<Form />
+<main class="flex justify-center items-center min-h-screen bg-gray-900">
+  {#if visible}
+    <div transition:fly={{ y: 500, duration: 300 }}>
+      <Form />
+    </div>
+  {/if}
 </main>

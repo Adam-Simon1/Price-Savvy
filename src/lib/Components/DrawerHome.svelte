@@ -48,7 +48,7 @@
     transition:fly={{ x: -200, duration: 300 }}
   >
     <a
-      href=""
+      href={""}
       on:click={signOut}
       class="text-xl font-montserrat text-red-600 mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3 flex flex-row items-center"
       ><svg

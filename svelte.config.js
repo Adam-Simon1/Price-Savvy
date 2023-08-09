@@ -16,8 +16,7 @@ const config = {
     files: {},
 
     alias: {
-      '$lib': path.resolve('./src/lib'),
-      '$lib/*': path.resolve('./src/lib/*')
+      $lib: path.resolve('./src/lib')
     }
   }
 };

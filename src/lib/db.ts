@@ -1,10 +1,10 @@
-import { DB_HOST, DB_DATABASE, DB_USER, DB_PASSWORD, DB_PORT } from '$env/static/private';
-import { Client, Pool } from 'pg';
+import { DB_HOST, DB_DATABASE, DB_USER, DB_PASSWORD } from '$env/static/private';
+import pg from 'pg';
+const { Pool } = pg;
 
 export const pool = await new Pool({
   host: DB_HOST,
   user: DB_USER,
-  port: DB_PORT,
   password: DB_PASSWORD,
   database: DB_DATABASE,
   ssl: {
@@ -13,4 +13,3 @@ export const pool = await new Pool({
 });
 
 export const dbPoolConnect = async () => await pool.connect();
-

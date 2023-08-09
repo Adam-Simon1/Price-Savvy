@@ -2,7 +2,6 @@ import { json } from '@sveltejs/kit';
 import { dbPoolConnect, pool } from '$lib/db';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
-import Form from '../../../lib/Components/Form.svelte';
 
 export async function POST({ request }): Promise<object | void> {
   try {
@@ -14,7 +13,7 @@ export async function POST({ request }): Promise<object | void> {
       password: string;
     }
 
-    const formData = await request.json() as form;
+    const formData = (await request.json()) as form;
     const { username, email, password } = formData;
 
     const queryInsert = 'INSERT INTO accounts (username, email, password) VALUES ($1, $2, $3)';
@@ -22,7 +21,7 @@ export async function POST({ request }): Promise<object | void> {
 
     if (username && email && password) {
       const sanitizedUsername: string = validator.escape(validator.trim(username));
-      const sanitizedEmail: string = validator.normalizeEmail(validator.trim(email));
+      const sanitizedEmail: string = validator.normalizeEmail(validator.trim(email)) as string;
 
       if (sanitizedUsername.length < 3) {
         client.release();

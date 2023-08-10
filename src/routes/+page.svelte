@@ -12,11 +12,12 @@
 </script>
 
 <main class="bg-gray-900 min-h-screen min-w-full flex justify-center items-center flex-col">
+  <title>Welcome to Price Savvy</title>
   {#if visible}
     <div transition:fly={{ y: 500, duration: 300 }}>
       <a
         href="/signin"
-        class="text-white font-montserrat bg-green-600 text-2xl p-2 rounded-3xl absolute top-4 right-5 w-36 text-center"
+        class="text-white font-montserrat bg-green-600 text-2xl p-2 rounded-3xl absolute top-4 right-5 w-36 text-center hover:bg-green-700 active:translate-y-1 transition"
         >Sign In</a
       >
 

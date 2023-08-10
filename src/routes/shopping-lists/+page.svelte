@@ -12,6 +12,7 @@
 </script>
 
 <main class="bg-gray-900 min-h-screen w-screen">
+  <title>Create shopping lists</title>
   {#if visible}
     <div transition:fly={{ y: 500, duration: 300 }}>
       <DrawerTablesNonAuth />

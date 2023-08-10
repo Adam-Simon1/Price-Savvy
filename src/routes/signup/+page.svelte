@@ -11,6 +11,7 @@
 </script>
 
 <main class="flex justify-center items-center min-h-screen bg-gray-900">
+  <title>Sign Up to Price Savvy</title>
   {#if visible}
     <div transition:fly={{ y: 500, duration: 300 }}>
       <Form />

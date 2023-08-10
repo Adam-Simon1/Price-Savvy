@@ -1,9 +1,5 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
   import GithubLink from './GithubLink.svelte';
-  function signInLink() {
-    goto('/search');
-  }
 </script>
 
 <div class="">
@@ -22,9 +18,9 @@
       </h2>
     </div>
     <div class="text-center">
-      <button
-        class="font-montserrat bg-green-600 h-12 w-44 text-white text-2xl rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
-        on:click|preventDefault={signInLink}>Get Started</button
+      <a
+        class="font-montserrat bg-green-600 p-2 px-5 text-white text-2xl rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
+        href="/search">Get Started</a
       >
     </div>
   </div>

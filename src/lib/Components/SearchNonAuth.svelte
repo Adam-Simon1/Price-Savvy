@@ -8,7 +8,6 @@
   import DropDown from './DropDown.svelte';
   import { sortingMethod } from '../../routes/auth/search/stores';
   import Cookies from 'js-cookie';
-  import { goto } from '$app/navigation';
 
   let kaufland: string[];
   let tesco: string[];
@@ -125,10 +124,6 @@
     const price = parseFloat(priceString.replace(',', '.'));
     return price;
   }
-
-  function shopListsLink() {
-    goto('/shopping-lists');
-  }
 </script>
 
 {#if $isLoading}
@@ -205,9 +200,9 @@
 
   <div class="text-center mt-10 mb-10">
     <h1 class="font-montserrat text-white text-2xl mb-3">Create a shopping list:</h1>
-    <button
-      class="font-montserrat text-white text-xl h-12 w-44 bg-green-600 rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
-      on:click={shopListsLink}>Shopping list</button
+    <a
+      class="font-montserrat text-white text-xl p-3 bg-green-600 rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
+      href="/shopping-lists">Shopping list</a
     >
   </div>
 </div>

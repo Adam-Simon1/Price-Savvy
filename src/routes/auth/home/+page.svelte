@@ -16,6 +16,7 @@
 </script>
 
 <main class="bg-gray-900 min-h-screen flex justify-center items-center flex-col">
+  <title>Welcome to Price Savvy</title>
   {#if visible}
     <div transition:fly={{ y: 500, duration: 300 }}>
       <DrawerHome />

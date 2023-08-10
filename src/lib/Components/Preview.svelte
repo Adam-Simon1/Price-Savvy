@@ -1,7 +1,7 @@
 <article class="flex flex-col-reverse mb-10 lg:flex-row">
   <div class="flex justify-center">
     <img
-      src="/search-page.png"
+      src="/search-page.webp"
       alt="Search Page"
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />
@@ -27,7 +27,7 @@
   </div>
   <div class="flex justify-center">
     <img
-      src="/shopping-lists.png"
+      src="/shopping-lists.webp"
       alt="Shopping Lists"
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />
@@ -37,7 +37,7 @@
 <article class="flex flex-col-reverse lg:flex-row">
   <div class="flex justify-center">
     <img
-      src="/saved-shopping-lists.png"
+      src="/saved-shopping-lists.webp"
       alt="Saved Shopping Lists"
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />

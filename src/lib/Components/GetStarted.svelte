@@ -1,12 +1,7 @@
 <script lang="ts">
-  import GithubLink from './GithubLink.svelte';
 </script>
 
 <div class="">
-  <div>
-    <GithubLink />
-  </div>
-
   <div class="border-b-2 border-gray-600 pb-5 mt-44 mb-10">
     <div class="text-center mb-5">
       <h1 class="font-montserrat text-4xl text-white font-bold">Price Savvy</h1>

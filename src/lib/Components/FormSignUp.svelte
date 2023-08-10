@@ -1,20 +1,16 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import LoadingScreen from './LoadingScreen.svelte';
-  import GithubLink from './GithubLink.svelte';
-  import { writable } from 'svelte/store';
 
   let message: string = '';
+  let status: number;
   let username: string;
   let password: string;
   let email: string;
   let visible: boolean = false;
 
-  let isLoading = writable(false);
-
   const handleSubmit = async () => {
     message = '';
-    isLoading.set(true);
+
     const response = await fetch('/signup', {
       method: 'POST',
       body: JSON.stringify({ username, email, password })
@@ -22,12 +18,11 @@
 
     const data = await response.json();
     message = data.message;
+    status = data.status;
 
     if (data.status == 302) {
       goto('/signin');
     }
-
-    isLoading.set(false);
   };
   const openEye = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -49,12 +44,6 @@
     document.querySelector('#password').type = visible ? 'text' : 'password';
   }
 </script>
-
-{#if $isLoading}
-  <LoadingScreen />
-{/if}
-
-<GithubLink />
 
 <div>
   <div class="flex justify-center items-center">
@@ -97,7 +86,11 @@
     </div>
 
     <div class="text-center w-80">
-      <p class="text-red-600 font-montserrat">{message}</p>
+      {#if status == 302}
+        <p class="text-green-600 font-montserrat">{message}</p>
+      {:else}
+        <p class="text-red-600 font-montserrat">{message}</p>
+      {/if}
     </div>
 
     <button

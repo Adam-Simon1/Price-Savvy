@@ -1,7 +1,5 @@
 <script lang="ts">
   import { onMount, afterUpdate } from 'svelte';
-  import { writable } from 'svelte/store';
-  import LoadingScreen from './LoadingScreen.svelte';
   import { autoComplete } from 'effortless-complete';
   import CheckBoxes from './CheckBoxes.svelte';
   import { tescoStatus, kauflandStatus } from '../../routes/auth/search/stores';
@@ -13,7 +11,7 @@
   let kaufland: string[];
   let tesco: string[];
   let autocompleteData: string[];
-  let isLoading = writable(false);
+
   let textareaValue = '';
   let roundedSum = 0;
 
@@ -50,8 +48,6 @@
   }
 
   onMount(async () => {
-    isLoading.set(true);
-
     interface data {
       kaufland: string;
       tesco: string;
@@ -62,7 +58,6 @@
 
     kaufland = await JSON.parse(data.kaufland);
     tesco = await JSON.parse(data.tesco);
-    isLoading.set(false);
   });
 
   afterUpdate(() => {
@@ -131,10 +126,6 @@
   }
 </script>
 
-{#if $isLoading}
-  <LoadingScreen />
-{/if}
-
 <div class="">
   <DropDown />
 
@@ -151,7 +142,7 @@
       <div class="flex justify-center">
         <div
           id="suggestionsContainer"
-          class="bg-gray-700 rounded-3xl text-white font-montserrat w-screen max-h-128 overflow-y-auto shadow-2xl max-w-md"
+          class="bg-gray-700 rounded-3xl text-white font-montserrat w-screen max-h-128 overflow-y-auto shadow-2xl max-w-md absolute"
         />
       </div>
     </div>

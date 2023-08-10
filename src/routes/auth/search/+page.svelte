@@ -13,9 +13,10 @@
 
 <main class="bg-gray-900 min-h-screen flex justify-center align-top min-w-full">
   <title>Select products in sale</title>
+  <DrawerSearch />
+
   {#if visible}
     <div transition:fly={{ y: 500, duration: 300 }}>
-      <DrawerSearch />
       <Search />
     </div>
   {/if}

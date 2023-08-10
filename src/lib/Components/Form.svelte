@@ -1,17 +1,14 @@
 <script lang="ts">
-  import LoadingScreen from './LoadingScreen.svelte';
-  import GithubLink from './GithubLink.svelte';
   import { goto } from '$app/navigation';
-  import { writable } from 'svelte/store';
   import { signIn } from '@auth/sveltekit/client';
 
   let email: string;
   let password: string;
   let message: string = '';
-  let isLoading = writable(false);
+  let status: number;
   const handleSubmit = async () => {
     message = '';
-    isLoading.set(true);
+
     const response = await fetch('/signin', {
       method: 'POST',
       body: JSON.stringify({ email, password })
@@ -24,15 +21,14 @@
 
     const data = (await response.json()) as data;
     message = data.message;
+    status = data.status;
 
     if (data.status == 302) {
       goto('/auth/home');
     }
-    isLoading.set(false);
   };
 
   const githubSignIn = async () => {
-    isLoading.set(true);
     await signIn('github');
 
     const response = await fetch('/api/github-signin', { method: 'POST' });
@@ -48,16 +44,8 @@
     if (user.name && user.image && user.email) {
       goto('/auth/home');
     }
-
-    isLoading.set(false);
   };
 </script>
-
-{#if $isLoading}
-  <LoadingScreen />
-{/if}
-
-<GithubLink />
 
 <div>
   <div class="flex justify-center items-center">
@@ -109,7 +97,11 @@
       required
     />
     <div class="text-center">
-      <p class="text-red-600 font-montserrat">{message}</p>
+      {#if status == 302}
+        <p class="text-green-600 font-montserrat">{message}</p>
+      {:else}
+        <p class="text-red-600 font-montserrat">{message}</p>
+      {/if}
     </div>
     <button
       type="submit"

@@ -1,7 +1,5 @@
 <script lang="ts">
   import { onMount, afterUpdate } from 'svelte';
-  import { writable } from 'svelte/store';
-  import LoadingScreen from './LoadingScreen.svelte';
   import { autoComplete } from 'effortless-complete';
   import CheckBoxes from './CheckBoxes.svelte';
   import { tescoStatus, kauflandStatus } from '../../routes/auth/search/stores';
@@ -12,7 +10,7 @@
   let kaufland: string[];
   let tesco: string[];
   let autocompleteData: string[];
-  let isLoading = writable(false);
+
   let textareaValue = '';
   let roundedSum = 0;
 
@@ -49,8 +47,6 @@
   }
 
   onMount(async () => {
-    isLoading.set(true);
-
     interface data {
       kaufland: string;
       tesco: string;
@@ -61,7 +57,6 @@
 
     kaufland = await JSON.parse(data.kaufland);
     tesco = await JSON.parse(data.tesco);
-    isLoading.set(false);
   });
 
   afterUpdate(() => {
@@ -125,10 +120,6 @@
     return price;
   }
 </script>
-
-{#if $isLoading}
-  <LoadingScreen />
-{/if}
 
 <div class="">
   <DropDown />

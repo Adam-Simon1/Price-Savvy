@@ -137,7 +137,7 @@
       <div class="flex justify-center">
         <div
           id="suggestionsContainer"
-          class="bg-gray-700 rounded-3xl text-white font-montserrat w-screen max-h-128 overflow-y-auto shadow-2xl max-w-md"
+          class="bg-gray-700 rounded-3xl text-white font-montserrat w-screen max-h-128 overflow-y-auto shadow-2xl max-w-md absolute"
         />
       </div>
     </div>

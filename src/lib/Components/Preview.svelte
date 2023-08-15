@@ -19,9 +19,9 @@
 <article class="flex flex-col mb-10 lg:flex-row">
   <div class="flex items-center mb-5">
     <div class="text-center lg:text-start lg:w-128">
-      <h1 class="text-white font-montserrat text-2xl">Search through sales</h1>
+      <h1 class="text-white font-montserrat text-2xl">Create shopping lists</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
-        Search thorugh the best sales available. Search, filter and sort the results
+        Shooping lists are separated by shops, so you have them organized.
       </h2>
     </div>
   </div>
@@ -44,9 +44,9 @@
   </div>
   <div class="flex items-center mb-5">
     <div class="text-center lg:text-end lg:w-128">
-      <h1 class="text-white font-montserrat text-2xl">Search through sales</h1>
+      <h1 class="text-white font-montserrat text-2xl">Save shopping lists</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
-        Search thorugh the best sales available. Search, filter and sort the results
+        Shooping lists can be saved and used later.
       </h2>
     </div>
   </div>

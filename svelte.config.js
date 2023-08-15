@@ -15,10 +15,8 @@ const config = {
     adapter: adapter(),
     files: {},
     csp: {
-      reportOnly: {
-        'default-src': ['self', 'https://fonts.googleapis.com', 'https://fonts.gstatic.com'],
+      directives: {
         'script-src': ['self'],
-        'style-src': ['self', 'https://fonts.googleapis.com', 'https://fonts.gstatic.com'],
         'img-src': ['self'],
         'connect-src': ['self'],
         'object-src': ['self'],

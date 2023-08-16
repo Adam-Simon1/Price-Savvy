@@ -19,7 +19,7 @@
 
   <a
     href="/signin"
-    class="text-white font-montserrat bg-green-600 text-2xl p-2 rounded-3xl absolute top-4 right-5 w-36 text-center hover:bg-green-700 active:translate-y-1 transition z-20"
+    class="text-white font-montserrat bg-green-600 text-2xl p-2 rounded-3xl absolute sm:top-4 sm:right-5 w-36 text-center hover:bg-green-700 active:translate-y-1 transition z-20 top-20"
     >{i('signIn')}</a
   >
 

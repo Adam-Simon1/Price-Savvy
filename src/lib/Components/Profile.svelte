@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { slide } from 'svelte/transition';
+  import { i } from '@inlang/sdk-js';
 
   export let name: string;
 
@@ -50,7 +51,7 @@
               />
               <path d="M9 12h12l-3 -3" />
               <path d="M18 15l3 -3" />
-            </svg>Sign Out</button
+            </svg>{i('signOut')}</button
           >
         </li>
       </ul>

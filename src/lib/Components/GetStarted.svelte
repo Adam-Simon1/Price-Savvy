@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { i } from '@inlang/sdk-js';
 </script>
 
 <div class="">
@@ -9,13 +10,13 @@
 
     <div class="text-center mb-7">
       <h2 class="text-gray-500 font-montserrat text-2xl">
-        No better way to save money on products
+        {i('desc')}
       </h2>
     </div>
     <div class="text-center">
       <a
         class="font-montserrat bg-green-600 p-2 px-5 text-white text-2xl rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
-        href="/search">Get Started</a
+        href="/search">{i('start')}</a
       >
     </div>
   </div>

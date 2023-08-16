@@ -6,6 +6,7 @@
   import DropDown from './DropDown.svelte';
   import { sortingMethod } from '../../routes/auth/search/stores';
   import Cookies from 'js-cookie';
+  import { i } from '@inlang/sdk-js';
 
   let kaufland: string[];
   let tesco: string[];
@@ -131,7 +132,7 @@
           type="text"
           class="w-screen h-12 rounded-full bg-gray-700 p-5 font-montserrat text-white text-xl shadow-2xl max-w-md"
           id="inputElement"
-          placeholder="Search for a product:"
+          placeholder={i('searchProduct')}
         />
       </div>
       <div class="flex justify-center">
@@ -182,7 +183,7 @@
         </div>
       </div>
       <div class="text-center mt-5 border-b-2 border-gray-800 pb-10 lg:border-b-0">
-        <h1 class="text-white font-montserrat text-2xl">Price: {roundedSum} €</h1>
+        <h1 class="text-white font-montserrat text-2xl">{i('price') + ' ' + roundedSum} €</h1>
       </div>
     </div>
 
@@ -190,10 +191,10 @@
   </div>
 
   <div class="text-center mt-10 mb-10">
-    <h1 class="font-montserrat text-white text-2xl mb-3">Create a shopping list:</h1>
+    <h1 class="font-montserrat text-white text-2xl mb-5">{i('shoppingListSentence')}</h1>
     <a
       class="font-montserrat text-white text-xl p-3 bg-green-600 rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
-      href="/shopping-lists">Shopping list</a
+      href="/shopping-lists">{i('shoppingList')}</a
     >
   </div>
 </div>

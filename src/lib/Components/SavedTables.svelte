@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { i } from '@inlang/sdk-js';
+
   interface Items {
     name: string;
     price: number;
@@ -72,10 +74,10 @@
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-white uppercase bg-green-600">
           <tr>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Product name </th>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Price </th>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Quantity </th>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Total Price </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('productName')} </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('priceTables')} </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('quantity')} </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('totalPrice')} </th>
           </tr>
         </thead>
         <tbody>
@@ -102,7 +104,7 @@
         </tbody>
         <tfoot>
           <tr class="font-semibold text-gray-900 dark:text-white">
-            <th scope="row" class="px-6 py-3 text-base">Total</th>
+            <th scope="row" class="px-6 py-3 text-base">{i('total')}</th>
             <td class="px-6 py-3">{calculateTotalBase(tescoItems)} €</td>
             <td class="px-[3.2rem] py-3">{calculateTotalQuantity(tescoItems)}</td>
             <td class="px-6 py-3">{calculateTotal(tescoItems)} €</td>
@@ -117,10 +119,10 @@
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-white uppercase bg-green-600">
           <tr>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Product name </th>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Price </th>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Quantity </th>
-            <th scope="col" class="px-6 py-3 font-montserrat"> Total Price </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('productName')} </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('priceTables')} </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('quantity')} </th>
+            <th scope="col" class="px-6 py-3 font-montserrat"> {i('totalPrice')} </th>
           </tr>
         </thead>
         <tbody>
@@ -147,7 +149,7 @@
         </tbody>
         <tfoot>
           <tr class="font-semibold text-gray-900 dark:text-white">
-            <th scope="row" class="px-6 py-3 text-base">Total</th>
+            <th scope="row" class="px-6 py-3 text-base">{i('total')}</th>
             <td class="px-6 py-3">{calculateTotalBase(kauflandItems)} €</td>
             <td class="px-[3.2rem] py-3">{calculateTotalQuantity(kauflandItems)}</td>
             <td class="px-6 py-3">{calculateTotal(kauflandItems)} €</td>

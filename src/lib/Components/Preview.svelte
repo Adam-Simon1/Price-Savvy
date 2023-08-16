@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { i } from '@inlang/sdk-js';
+</script>
+
 <article class="flex flex-col-reverse mb-10 lg:flex-row">
   <div class="flex justify-center">
     <img
@@ -6,22 +10,22 @@
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />
   </div>
-  <div class="flex items-center mb-5">
+  <div class="flex items-center mb-5 justify-center">
     <div class="text-center lg:text-end lg:w-128">
-      <h1 class="text-white font-montserrat text-2xl">Search through sales</h1>
+      <h1 class="text-white font-montserrat text-2xl">{i('search')}</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
-        Search thorugh the best sales available. Search, filter and sort the results
+        {i('searchDesc')}
       </h2>
     </div>
   </div>
 </article>
 
 <article class="flex flex-col mb-10 lg:flex-row">
-  <div class="flex items-center mb-5">
+  <div class="flex items-center mb-5 justify-center">
     <div class="text-center lg:text-start lg:w-128">
-      <h1 class="text-white font-montserrat text-2xl">Create shopping lists</h1>
+      <h1 class="text-white font-montserrat text-2xl">{i('create')}</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
-        Shooping lists are separated by shops, so you have them organized.
+        {i('createDesc')}
       </h2>
     </div>
   </div>
@@ -42,11 +46,11 @@
       class="rounded-3xl border-2 border-gray-800 shadow-xl w-[90%] max-w-[500px] lg:w-[500px]"
     />
   </div>
-  <div class="flex items-center mb-5">
+  <div class="flex items-center mb-5 justify-center">
     <div class="text-center lg:text-end lg:w-128">
-      <h1 class="text-white font-montserrat text-2xl">Save shopping lists</h1>
+      <h1 class="text-white font-montserrat text-2xl">{i('saved')}</h1>
       <h2 class="text-gray-500 font-montserrat text-xl">
-        Shooping lists can be saved and used later.
+        {i('savedDesc')}
       </h2>
     </div>
   </div>

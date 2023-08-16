@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import { goto } from '$app/navigation';
+  import { i } from '@inlang/sdk-js';
 
   let isExpanded = false;
 
@@ -48,7 +49,7 @@
     transition:fly={{ x: -200, duration: 300 }}
   >
     <a
-      href={""}
+      href={''}
       on:click={signOut}
       class="text-xl font-montserrat text-red-600 mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3 flex flex-row items-center"
       ><svg
@@ -67,22 +68,22 @@
         <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
         <path d="M9 12h12l-3 -3" />
         <path d="M18 15l3 -3" />
-      </svg>Sign Out</a
+      </svg>{i('signOut')}</a
     >
     <a
       href="/auth/search"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Edit Shopping List</a
+      >{i('edit')}</a
     >
     <a
       href="/auth/saved-shopping-lists"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Saved Shopping Lists</a
+      >{i('savedLists')}</a
     >
     <a
       href="https://github.com/Adam-Simon1/Svelte-Price-Savvy"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Github</a
+      >{i('githubLink')}</a
     >
   </div>
 {/if}

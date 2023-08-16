@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { signIn } from '@auth/sveltekit/client';
+  import { i } from '@inlang/sdk-js';
 
   let email: string;
   let password: string;
@@ -49,7 +50,7 @@
 
 <div>
   <div class="flex justify-center items-center">
-    <h1 class="text-white font-montserrat text-4xl font-bold">Sign In</h1>
+    <h1 class="text-white font-montserrat text-4xl font-bold">{i('signIn')}</h1>
   </div>
 
   <div>
@@ -73,25 +74,25 @@
           d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
         />
       </svg>
-      Sign in with github</button
+      {i('github')}</button
     >
   </div>
 
   <div>
-    <p class="text-white flex justify-center font-montserrat text-lg">or</p>
+    <p class="text-white flex justify-center font-montserrat text-lg">{i('or')}</p>
   </div>
 
   <form method="POST" class="flex flex-col" on:submit|preventDefault={handleSubmit}>
     <input
       type="text"
-      placeholder="Email"
+      placeholder={i('email')}
       class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
       bind:value={email}
       required
     />
     <input
       type="password"
-      placeholder="Password"
+      placeholder={i('password')}
       class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
       bind:value={password}
       required
@@ -106,14 +107,14 @@
     <button
       type="submit"
       class="h-12 w-80 rounded-3xl bg-green-600 p-3 my-2 text-2xl font-montserrat text-white flex items-center justify-center hover:bg-green-700 active:translate-y-1 transition shadow-xl"
-      >Sign In</button
+      >{i('signIn')}</button
     >
   </form>
   <div>
     <a
       href="/signup"
       class="text-blue-400 font-montserrat text-lg flex justify-center hover:text-blue-500"
-      >Don't have an account?</a
+      >{i('noAccount')}</a
     >
   </div>
 </div>

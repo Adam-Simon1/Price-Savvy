@@ -1,5 +1,6 @@
 <script lang="ts">
   import { tescoStatus, kauflandStatus } from '../../routes/auth/search/stores';
+  import { i } from '@inlang/sdk-js';
 
   let areChecked = false;
 
@@ -60,20 +61,20 @@
         class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
         on:change={checkAll}
       />
-      <label for="all" class="font-montserrat text-white text-2xl ml-2">All</label>
+      <label for="all" class="font-montserrat text-white text-2xl ml-2">{i('all')}</label>
     </div>
   </div>
 
   <div class="mb-3">
     <button
       class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition"
-      on:click={sendStatus}>Apply</button
+      on:click={sendStatus}>{i('apply')}</button
     >
   </div>
   <div>
     <button
       class="w-40 h-10 bg-gray-700 text-white font-montserrat rounded-3xl text-xl shadow-2xl hover:bg-gray-800 active:translate-y-1 transition"
-      on:click={reset}>Reset</button
+      on:click={reset}>{i('reset')}</button
     >
   </div>
 </div>

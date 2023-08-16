@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import { i } from '@inlang/sdk-js';
 
   let message: string = '';
   let status: number;
@@ -47,12 +48,12 @@
 
 <div>
   <div class="flex justify-center items-center">
-    <h1 class="text-white font-montserrat text-4xl font-bold">Sign Up</h1>
+    <h1 class="text-white font-montserrat text-4xl font-bold">{i('signUp')}</h1>
   </div>
   <form class="flex flex-col mt-14 ml-5" on:submit|preventDefault={handleSubmit}>
     <input
       type="text"
-      placeholder="Username"
+      placeholder={i('username')}
       name="username"
       class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl text-white font-montserrat shadow-xl"
       bind:value={username}
@@ -60,7 +61,7 @@
     />
     <input
       type="text"
-      placeholder="Email"
+      placeholder={i('email')}
       name="email"
       class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
       bind:value={email}
@@ -69,7 +70,7 @@
     <div class="flex flex-row">
       <input
         type="password"
-        placeholder="Password"
+        placeholder={i('password')}
         name="password"
         class="h-12 w-80 rounded-3xl bg-gray-700 p-3 my-2 text-xl font-montserrat text-white shadow-xl"
         bind:value={password}
@@ -96,14 +97,14 @@
     <button
       type="submit"
       class="h-12 w-80 rounded-3xl bg-green-600 p-3 my-2 text-2xl font-montserrat text-white flex items-center justify-center hover:bg-green-700 active:translate-y-1 transition shadow-xl"
-      >Sign Up</button
+      >{i('signUp')}</button
     >
   </form>
   <div>
     <a
       href="/signin"
       class="text-blue-400 font-montserrat text-lg flex justify-center hover:text-blue-500"
-      >Already have an account?</a
+      >{i('haveAccount')}</a
     >
   </div>
 </div>

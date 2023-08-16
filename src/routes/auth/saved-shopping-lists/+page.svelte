@@ -1,5 +1,6 @@
 <script lang="ts">
   import TablesCount from '$lib/Components/TablesCount.svelte';
+  import { i } from '@inlang/sdk-js';
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
 
@@ -23,14 +24,14 @@
       transition:fly={{ y: 500, duration: 300 }}
       class="flex justify-start items-center flex-col w-screen"
     >
-      <h1 class="text-white font-montserrat text-4xl my-10 font-bold">Shopping Lists</h1>
+      <h1 class="text-white font-montserrat text-4xl my-10 font-bold">{i('shoppingLists')}</h1>
 
       {#if data.status == 400}
         <h1 class="text-white font-montserrat text-xl mb-10 text-center">{data.message}</h1>
         <a
           href="/auth/search"
           class="text-white font-montserrat h-12 w-64 bg-green-600 text-xl flex justify-center items-center rounded-3xl hover:bg-green-700 active:translate-y-1 transition"
-          >Create a shopping list</a
+          >{i('createLists')}</a
         >
       {:else}
         {#each indexes as index, i}

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { i } from '@inlang/sdk-js';
   interface Text {
     status: number;
     message: string;
@@ -24,7 +25,7 @@
 <div class="mb-10 flex flex-col justify-center items-center">
   <button
     class="text-white font-montserrat text-2xl bg-green-600 h-12 w-40 rounded-3xl shadow-2xl hover:bg-green-700 active:translate-y-1 transition"
-    on:click|preventDefault={save}>Save</button
+    on:click|preventDefault={save}>{i('save')}</button
   >
   <p class="text-green-600 text-xl mt-3 font-montserrat">{text.message}</p>
 </div>

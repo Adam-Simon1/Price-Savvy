@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
+  import { i } from '@inlang/sdk-js';
 
   let isExpanded = false;
 
@@ -38,22 +39,22 @@
     <a
       href="/auth/home"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Home</a
+      >{i('home')}</a
     >
     <a
       href="/auth/search"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Edit Shopping List</a
+      >{i('edit')}</a
     >
     <a
       href="/auth/saved-shopping-lists"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Saved Shopping Lists</a
+      >{i('savedLists')}</a
     >
     <a
       href="https://github.com/Adam-Simon1/Svelte-Price-Savvy"
       class="text-xl font-montserrat text-white mb-5 hover:bg-gray-800 transition rounded-3xl p-1 pl-3"
-      >Github</a
+      >{i('githubLink')}</a
     >
   </div>
 {/if}

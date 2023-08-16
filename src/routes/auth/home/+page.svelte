@@ -4,8 +4,10 @@
   import Profile from '$lib/Components/Profile.svelte';
   import DrawerHome from '$lib/Components/DrawerHome.svelte';
   import GithubLink from '$lib/Components/GithubLink.svelte';
+  import Language from '$lib/Components/Language.svelte';
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
+  import { i } from '@inlang/sdk-js';
 
   let visible = false;
 
@@ -22,8 +24,13 @@
   <a
     href="/auth/saved-shopping-lists"
     class="text-white text-2xl font-montserrat hover:bg-gray-800 transition rounded-3xl w-80 text-center active:translate-y-1 absolute top-5 right-56 p-2 hidden sm:inline-block"
-    >Saved Shopping Lists</a
+    >{i('savedLists')}</a
   >
+
+  <div class="absolute top-4">
+    <Language />
+  </div>
+
   <Profile name={data.username} />
   <DrawerHome />
 

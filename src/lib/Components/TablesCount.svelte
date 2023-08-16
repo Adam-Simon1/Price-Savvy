@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { i } from '@inlang/sdk-js';
+
   export let index: number;
   export let identifier: number;
 
@@ -19,7 +21,7 @@
 >
   <a
     href="/auth/saved-shopping-lists/{identifier.toString()}"
-    class="text-green-600 font-montserrat text-xl ml-10">Shopping list {index}</a
+    class="text-green-600 font-montserrat text-xl ml-10">{i('shoppingList') + ' ' + index}</a
   >
 
   <button class="mr-10" on:click={removeShoppingList} id={identifier.toString()}>
